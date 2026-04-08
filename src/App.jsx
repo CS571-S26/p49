@@ -1,20 +1,25 @@
-import './App.css'
-import { Routes, Route } from 'react-router-dom'
-import HomePage from './pages/HomePage.jsx'
-import AboutPage from './pages/AboutPage.jsx'
-import NotFoundPage from './pages/NotFoundPage.jsx'
-import Layout from './components/Layout.jsx'
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import SchedulePage from "./pages/SchedulePage";
+import MembershipPage from "./pages/MembershipPage";
+import CoachesPage from "./pages/CoachesPage";
+import MyClassesPage from "./pages/MyClassesPage";
 
-function App() {
+export default function App() {
   return (
     <Routes>
-      <Route element={<Layout />}>
+      <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route path="about" element={<AboutPage />} />
+        <Route path="schedule" element={<SchedulePage />} />
+        <Route path="myclasses" element={<MyClassesPage />} />
+        <Route path="membership" element={<MembershipPage />} />
+        <Route path="coaches" element={<CoachesPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
-  )
+  );
 }
-
-export default App

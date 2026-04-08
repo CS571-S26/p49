@@ -1,17 +1,44 @@
-import { Link, Outlet } from 'react-router-dom'
-import '../App.css'
+import { NavLink, Outlet } from "react-router-dom";
+import { Container, Nav, Navbar } from "react-bootstrap";
 
 export default function Layout() {
   return (
-    <div>
-      <nav className="m-3">
-        <Link to="/" className="me-3">Home</Link>
-        <Link to="/about/">About</Link>
-      </nav>
+    <>
+      {/* Top primary navigation bar */}
+      <Navbar bg="dark" variant="dark" expand="lg">
+        <Container>
+          <Navbar.Brand as={NavLink} to="/">
+            Chill & Roll BJJ Club
+          </Navbar.Brand>
 
-      <main>
+          <Navbar.Toggle aria-controls="main-navbar" />
+
+          <Navbar.Collapse id="main-navbar">
+            <Nav className="me-auto">
+              <Nav.Link as={NavLink} to="/">
+                Home
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/about">
+                About
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/schedule">
+                Schedule
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/membership">
+                Membership
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/coaches">
+                Coaches
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+
+      {/* Main page content area */}
+      <Container className="mt-4">
         <Outlet />
-      </main>
-    </div>
-  )
+      </Container>
+    </>
+  );
 }
